@@ -32,7 +32,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     @IBAction func startButtonTapped(_ sender: Any) {
@@ -42,9 +41,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
+        timer.invalidate()
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
+        timer.invalidate()
+        myImageView.image = nil
+        timeLabel.text = "やめるんですか？"
     }
     
     @objc func countDown(){
