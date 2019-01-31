@@ -35,19 +35,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: Any) {
-        if timer == nil{
+        if flag{
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: Selector("countDown"), userInfo: nil, repeats: true)
+            flag = false
         }
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
         timer.invalidate()
+        flag = true
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
         timer.invalidate()
         myImageView.image = nil
         timeLabel.text = "やめるんですか？"
+        flag = true
     }
     
     @objc func countDown(){
@@ -64,6 +67,8 @@ class ViewController: UIViewController {
         if count == 0{
             timer.invalidate()
             self.myImageView.image = self.img2
+            count = maxCount
+            flag = true
         }
     }
     
